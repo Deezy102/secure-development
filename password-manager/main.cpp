@@ -4,7 +4,7 @@
 #include <QQmlProperty>
 #include <QDebug>
 
-#include "authpage.h"
+#include "authmanager.h"
 
 int main(int argc, char *argv[])
 {
@@ -12,15 +12,13 @@ int main(int argc, char *argv[])
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
 
-    qDebug() << pincode;
-
     QGuiApplication app(argc, argv);
     QQmlApplicationEngine engine;
 
-    AuthPage auth;
+    AuthManager authManager;
 
     QQmlContext *context = engine.rootContext();
-    context->setContextProperty("auth", &auth);
+    context->setContextProperty("authManager", &authManager);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

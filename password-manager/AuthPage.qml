@@ -8,7 +8,7 @@ Page {
     signal authorized()
 
     Connections {
-        target: auth
+        target: authManager
         function onAuth(success) {
             if (success) {
                 authPage.authorized();
@@ -47,7 +47,7 @@ Page {
             Layout.alignment: Qt.AlignHCenter
             text: "Войти"
             font.pointSize: 15
-            onClicked: auth.getPincode(pincode.text)
+            onClicked: authManager.getPincode(pincode.text)
         }
     }
 }

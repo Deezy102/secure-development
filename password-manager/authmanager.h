@@ -1,14 +1,14 @@
-#ifndef AUTHPAGE_H
-#define AUTHPAGE_H
+#ifndef AUTHMANAGER_H
+#define AUTHMANAGER_H
 
 #include <QObject>
 #include <QString>
 
-class AuthPage : public QObject
+class AuthManager : public QObject
 {
     Q_OBJECT
 public:
-    explicit AuthPage(QObject *parent = nullptr);
+    explicit AuthManager(QObject *parent = nullptr);
     QString pincode;
 signals:
     void auth(bool success);
@@ -17,4 +17,4 @@ public slots:
     void getPincode(QString pincode);
 };
 
-#endif // AUTHPAGE_H
+#endif // AUTHMANAGER_H

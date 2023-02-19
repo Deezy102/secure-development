@@ -1,12 +1,12 @@
-#include "authpage.h"
+#include "authmanager.h"
 
-AuthPage::AuthPage(QObject *parent)
+AuthManager::AuthManager(QObject *parent)
     : QObject{parent}
 {
 
 }
 
-void AuthPage::getPincode(QString pincode)
+void AuthManager::getPincode(QString pincode)
 {
     bool result = false;
     if (pincode == "0000") {
