@@ -4,6 +4,8 @@
 #include <QQmlProperty>
 #include <QDebug>
 
+#include "credslist.h"
+#include "credsmodel.h"
 #include "authmanager.h"
 
 int main(int argc, char *argv[])
@@ -13,12 +15,19 @@ int main(int argc, char *argv[])
 #endif
 
     QGuiApplication app(argc, argv);
-    QQmlApplicationEngine engine;
+
+
+    qmlRegisterType<CredsModel>("Creds", 1, 0, "CredsModel");
+    qmlRegisterUncreatableType<CredsList>("Creds",1,0,"CredsList", QStringLiteral("CredsList should not be created in QML"));
+
 
     AuthManager authManager;
+    CredsList credsList;
 
+    QQmlApplicationEngine engine;
     QQmlContext *context = engine.rootContext();
     context->setContextProperty("authManager", &authManager);
+    context->setContextProperty("credsList", &credsList);
 
     const QUrl url(QStringLiteral("qrc:/main.qml"));
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated,

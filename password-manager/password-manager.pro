@@ -6,6 +6,9 @@ QT += quick
 
 SOURCES += \
         authmanager.cpp \
+        credslist.cpp \
+        credsmodel.cpp \
+        filemanager.cpp \
         main.cpp
 
 RESOURCES += qml.qrc
@@ -24,4 +27,9 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES +=
 
 HEADERS += \
-    authmanager.h
+    authmanager.h \
+    credslist.h \
+    credsmodel.h \
+    filemanager.h
+
+CONFIG += crypto
